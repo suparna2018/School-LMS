@@ -1,0 +1,46 @@
+blog
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyd
+*.pyo
+*.pyc
+*.pyo
+*.pyd
+*.pyc
+*.pyo
+*.pyd
+
+# Logs
+*.log
+
+# Environment
+venv/
+.env
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.suo
+*.ncb
+*.sdf
+*.opensdf
+*.idb
+*.pdb
+*.ipch
+*.hmap
+*.log
+
+# Others
+*.swp
+*~
+.*.swp

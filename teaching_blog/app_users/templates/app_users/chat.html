@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat with Bot</title>
+    <script>
+        async function sendMessage() {
+            const userInput = document.getElementById('userInput').value;
+            try {
+                const response = await fetch('/chat/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ input: userInput }),
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                const chatBox = document.getElementById('chatBox');
+                chatBox.innerHTML += `<p><strong>You:</strong> ${userInput}</p>`;
+                chatBox.innerHTML += `<p><strong>Bot:</strong> ${data.response}</p>`;
+                document.getElementById('userInput').value = '';
+            } catch (error) {
+                console.error('Error:', error);
+                const chatBox = document.getElementById('chatBox');
+                chatBox.innerHTML += `<p><strong>Bot:</strong> Sorry, something went wrong.</p>`;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="chatBox" style="border: 1px solid #ccc; padding: 10px; width: 300px; height: 400px; overflow-y: scroll;">
+        <p><strong>Bot:</strong> Hello! How can I help you today?</p>
+    </div>
+    <input type="text" id="userInput" style="width: 300px;" />
+    <button onclick="sendMessage()">Send</button>
+</body>
+</html>
